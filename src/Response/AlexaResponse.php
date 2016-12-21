@@ -115,6 +115,14 @@ class AlexaResponse implements \JsonSerializable
     }
 
     /**
+     *
+     */
+    public function render()
+    {
+        echo json_encode($this);
+    }
+
+    /**
      * @return array
      */
     public function jsonSerialize()

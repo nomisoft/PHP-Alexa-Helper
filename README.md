@@ -69,7 +69,7 @@ use \Alexa\Request\Card;
 $card = new Card();
 $card->setContent('Hello World');
 $response->setCard($card);
-echo json_encode($response);
+$response->render();
 ```
 
 As well as setting the cards text content you can also set a title and return images to be displayed
@@ -84,7 +84,7 @@ $card->setLargeImage('http://example.com/large.jpg');
 $response->setCard($card);
 ```
 
-The AlexaResponse class is JSON serializable so to return your response to Amazon just ```php echo json_encode($response);```. If you're using Symfony you might return the json with JsonResponse from your controller like:
+The AlexaResponse class is JSON serializable so to return your response to Amazon just `echo json_encode($response);` or call `$response->render()`. If you're using Symfony you might return the json with JsonResponse from your controller like:
 ```php
 $jsonResponse = new \Symfony\Component\HttpFoundation\JsonResponse($response);
 return $jsonResponse;
