@@ -36,17 +36,25 @@ class AlexaRequest
 
     /**
      * @return mixed
+     * @throws \Exception
      */
     public function getType()
     {
+        if (!property_exists($this, 'request')) {
+            throw new \Exception('Invalid JSON request');
+        }
         return $this->request->type;
     }
 
     /**
      * @return mixed
+     * @throws \Exception
      */
     public function getIntent()
     {
+        if (!property_exists($this, 'request')) {
+            throw new \Exception('Invalid JSON request');
+        }
         return $this->request->intent;
     }
 

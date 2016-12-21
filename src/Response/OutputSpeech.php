@@ -37,7 +37,6 @@ class OutputSpeech implements \JsonSerializable
      */
     public function setType($type)
     {
-        //todo: must be PlainText or SSML
         $this->type = $type;
     }
 
@@ -78,8 +77,6 @@ class OutputSpeech implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        //todo: if plaintext type text must be set, if ssml type ssml must be set else throw exception
-        //todo: only output set variables
         return [
             'type' => $this->type,
             'text' => $this->text,

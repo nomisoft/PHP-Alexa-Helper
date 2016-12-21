@@ -35,7 +35,6 @@ class Reprompt implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        //todo: only output set variables
         return [
             'outputSpeech' => $this->outputSpeech
         ];

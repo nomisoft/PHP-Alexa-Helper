@@ -52,7 +52,6 @@ class Card implements \JsonSerializable
      */
     public function setType($type)
     {
-        //todo: must be Simple, Standard, LinkAccount
         $this->type = $type;
     }
 
@@ -141,7 +140,6 @@ class Card implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        //todo: only output set variables
         return [
             'type' => $this->type,
             'title' => $this->title,
