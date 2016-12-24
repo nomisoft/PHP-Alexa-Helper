@@ -50,7 +50,7 @@ use \Alexa\Request\RequestValidator;
 $alexaRequest = AlexaRequest::fromRequest();
 $validator = new RequestValidator($request);
 if (!$validator->validate('YOUR_APP_ID')) {
-    print_r($validator->getErrors(), true);
+    print_r($validator->getErrors());
 }
 ```
 ### Responses
