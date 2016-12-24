@@ -10,12 +10,18 @@ class AlexaRequest
 {
 
     /**
+     * @var
+     */
+    private $json;
+
+    /**
      * @param $json
      *
      * @throws \Exception
      */
     public function __construct($json)
     {
+        $this->json = $json;
         $data = json_decode($json);
         if (is_null($data)) {
             throw new \Exception('Invalid JSON request');
@@ -32,6 +38,14 @@ class AlexaRequest
     {
         $json = file_get_contents('php://input');
         return new AlexaRequest($json);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJson()
+    {
+        return $this->json;
     }
 
     /**
