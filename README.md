@@ -40,6 +40,19 @@ There are a few shortcut functions available
 
 **$alexaRequest->getSlots()** returns a key/value array of the intent slots. For example `"slots": { "ZodiacSign": { "name": "ZodiacSign", "value": "virgo" } }` would return `array('ZodiacSign'=>'virgo')`
 
+### Validating requests
+
+Skills being submitted for Alexa approval also need an extra step in verifying the requests come from Amazon. The RequestValidator class will do all necessary timestamp and certificate checks.
+
+```php
+use \Alexa\Request\AlexaRequest;
+use \Alexa\Request\RequestValidator;
+$alexaRequest = AlexaRequest::fromRequest();
+$validator = new RequestValidator($request);
+if (!$validator->validate('YOUR_APP_ID')) {
+    print_r($validator->getErrors(), true);
+}
+```
 ### Responses
 
 To respond to the Alexa request you can construct an OutputSpeech object
