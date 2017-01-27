@@ -99,7 +99,7 @@ class RequestValidator
      */
     private function validateApplicationId($applicationId)
     {
-        if( $this->request->session->application->applicationId != $applicationId) {
+        if( $this->request->context->application->applicationId != $applicationId) {
             $this->errors[] = 'Invalid application id';
             return false;
         }
