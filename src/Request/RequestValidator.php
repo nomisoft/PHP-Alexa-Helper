@@ -10,25 +10,25 @@ class RequestValidator
 {
 
     /**
-     * @var
+     * @var AlexaRequest
      */
     private $request;
 
     /**
-     * @var
+     * @var string[]
      */
     private $errors;
 
     /**
-     * @param $request
+     * @param AlexaRequest $request
      */
-    public function __construct($request)
+    public function __construct(AlexaRequest $request)
     {
         $this->request = $request;
     }
 
     /**
-     * @param $applicationId
+     * @param string $applicationId
      *
      * @return bool
      */
@@ -93,13 +93,13 @@ class RequestValidator
     }
 
     /**
-     * @param $applicationId
+     * @param string $applicationId
      *
      * @return bool
      */
     private function validateApplicationId($applicationId)
     {
-        if( $this->request->session->application->applicationId != $applicationId) {
+        if( $this->request->getApplicationId() != $applicationId) {
             $this->errors[] = 'Invalid application id';
             return false;
         }

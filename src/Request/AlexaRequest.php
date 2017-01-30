@@ -80,5 +80,20 @@ class AlexaRequest
         return array_map(function($obj) { return $obj->value; }, get_object_vars($this->getIntent()->slots));
     }
 
+    /**
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getApplicationId()
+    {
+        if (property_exists($this, 'session')) {
+            return $this->session->application->applicationId;
+        }
+        if (property_exists($this, 'context')) {
+            return $this->context->application->applicationId;
+        }
+        throw new \Exception('Application ID not found');
+    }
+
 
 }
