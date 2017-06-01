@@ -78,8 +78,9 @@ $speech->setText('<speak>Hello <say-as interpret-as="spell-out">world</say-as>.<
 If you wish to also send a 'card' response which is shown on screen in the Alexa app you can create a Card object. The below example is for a 'Simple' card with just some text
 
 ```php
-use \Alexa\Request\Card;
-$card = new Card();
+use \Alexa\Response\Card\Simple;
+$card = new Simple();
+$card->setTitle('Hello World');
 $card->setContent('Hello World');
 $response->setCard($card);
 $response->render();
@@ -88,12 +89,21 @@ $response->render();
 As well as setting the cards text content you can also set a title and return images to be displayed
 
 ```php
-$card = new Card();
-$card->setType('Standard');
+use \Alexa\Response\Card\Standard;
+$card = new Standard();
 $card->setTitle('Hello World Title');
 $card->setText('Hello World Content');
 $card->setSmallImage('http://example.com/small.jpg');
 $card->setLargeImage('http://example.com/large.jpg');
+$response->setCard($card);
+```
+
+You could even ask for additional permissions
+
+```php
+use \Alexa\Response\Card\AskForPermissionsConsent;
+$card = new AskForPermissionsConsent();
+$card->setPermissions(array("read::alexa:device:all:address"));
 $response->setCard($card);
 ```
 

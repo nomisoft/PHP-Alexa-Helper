@@ -8,6 +8,11 @@
           "name": "Simon Jarvis",
           "email": "dev@nomisoft.co.uk",
           "homepage": "https://www.nomisoft.co.uk"
+        },
+        {
+          "name": "Gilles van den Hoven",
+          "email": "gilles@webunity.nl",
+          "homepage": "http://www.webunity.nl"
         }
     ],
     "require": {
