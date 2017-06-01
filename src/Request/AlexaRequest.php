@@ -86,11 +86,12 @@ class AlexaRequest
      */
     public function getApplicationId()
     {
+    	// Testing from AWS console does not give the 'context', but if you use the website http://echosim.io/(or a real devices) then it does.
+        if (property_exists($this, 'context') && property_exists($this, 'system')) {
+         	return $this->context->system->application->applicationId;
+        }
         if (property_exists($this, 'session')) {
             return $this->session->application->applicationId;
-        }
-        if (property_exists($this, 'context')) {
-            return $this->context->application->applicationId;
         }
         throw new \Exception('Application ID not found');
     }
